@@ -103,16 +103,6 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .nav-links {
@@ -393,13 +383,30 @@
             font-size: 0.9rem;
             color: #667eea;
         }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="signature-finder-logo.png" alt="Signature Finder App Icon" class="logo-icon">
                 Signature Finder
             </div>
             <ul class="nav-links">
@@ -414,6 +421,7 @@
     <main>
         <section class="hero">
             <div class="container">
+                <img src="signature-finder-logo.png" alt="Signature Finder Logo" class="hero-logo">
                 <h1>Discover Artists from Signatures with AI</h1>
                 <p>Snap a photo of any art signature and instantly identify the artist, learn their style, and explore art history. The ultimate AI-powered signature identification app for art enthusiasts, collectors, and students.</p>
                 <a href="https://apps.apple.com/us/app/signature-finder/id6740019528" class="cta-button">
