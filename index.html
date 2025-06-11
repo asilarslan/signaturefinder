@@ -330,14 +330,46 @@
                 font-size: 2.5rem;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                width: 200px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
             }
 
             .features-grid,
             .steps,
             .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -401,6 +433,26 @@
                 transform: translateY(-10px);
             }
         }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -409,7 +461,12 @@
             <div class="logo">
                 Signature Finder
             </div>
-            <ul class="nav-links">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
@@ -571,5 +628,32 @@
             <p>Discover the artist behind every signature with AI-powered recognition technology.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    document.getElementById('navLinks').classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const nav = document.querySelector('.nav-links');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
