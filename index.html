@@ -97,6 +97,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            position: relative;
         }
 
         .logo {
@@ -346,6 +347,7 @@
                 border-radius: 8px;
                 padding: 1rem;
                 gap: 1rem;
+                z-index: 1001;
             }
 
             .nav-links.active {
@@ -438,7 +440,10 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            z-index: 999;
         }
 
         .hamburger span {
@@ -448,6 +453,7 @@
             margin: 3px 0;
             transition: 0.3s;
             border-radius: 2px;
+            display: block;
         }
 
         .nav-links.active {
@@ -631,12 +637,17 @@
 
     <script>
         function toggleMenu() {
+            console.log('Menu toggle clicked');
             const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+                console.log('Menu active state:', navLinks.classList.contains('active'));
+            }
         }
 
         // Close menu when clicking on a link
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -649,7 +660,7 @@
                 const nav = document.querySelector('.nav-links');
                 const hamburger = document.querySelector('.hamburger');
                 
-                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                if (nav && hamburger && !nav.contains(e.target) && !hamburger.contains(e.target)) {
                     nav.classList.remove('active');
                 }
             });
