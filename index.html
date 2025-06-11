@@ -326,6 +326,30 @@
             opacity: 1;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            z-index: 999;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -434,30 +458,6 @@
             50% {
                 transform: translateY(-10px);
             }
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            background: transparent;
-            border: none;
-            z-index: 999;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-            display: block;
-        }
-
-        .nav-links.active {
-            display: flex;
         }
     </style>
 </head>
