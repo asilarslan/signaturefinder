@@ -62,6 +62,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="signature-finder-logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="signature-finder-logo.png">
 
+    <script>
+        (function () {
+            if (
+                window.location.pathname === "/download" ||
+                window.location.pathname === "/download.html"
+            ) {
+                const iosUrl = "https://apps.apple.com/us/app/signature-finder/id6740019528";
+                const androidUrl = "https://play.google.com/store/apps/details?id=app.signaturefinder";
+                const fallbackUrl = "https://signaturefinder.app";
+        
+                const ua = navigator.userAgent || navigator.vendor || window.opera;
+        
+                if (/iPad|iPhone|iPod/.test(ua)) {
+                    window.location.replace(iosUrl);
+                } else if (/android/i.test(ua)) {
+                    window.location.replace(androidUrl);
+                } else {
+                    window.location.replace(fallbackUrl);
+                }
+            }
+        })();
+        </script>
+
     <style>
         * {
             margin: 0;
@@ -497,7 +520,7 @@
     <main>
         <section class="hero">
             <div class="container">
-                <!-- <img src="signature-finder-logo.png" alt="Signature Finder Logo" class="hero-logo"> -->
+                <img src="qr-code.png.png" alt="Download Signature Finder QR Code" class="hero-logo"> 
                 <h1>Discover Artists from Signatures with AI</h1>
                 <p>Snap a photo of any art signature and instantly identify the artist, learn their style, and explore art history. The ultimate AI-powered signature identification app for art enthusiasts, collectors, and students.</p>
                 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
